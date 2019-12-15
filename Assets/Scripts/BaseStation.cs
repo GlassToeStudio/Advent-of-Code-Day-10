@@ -15,10 +15,7 @@ namespace GTS.AOC
         private LineRenderer lineRenderer;
 
         private int layerMask;
-        private float dist = 0;
-        private int index = 0;
         private int numAsteroidToFind = 0;
-        float waitTime = 0.1f;
 
         public event Action<int> OnCounterUpdated;
 
@@ -187,7 +184,7 @@ namespace GTS.AOC
 
         private void LinearScanFast(List<Cell> asteroidMap)
         {
-            Vector3 dir = asteroidMap[index].position - transform.position;
+            Vector3 dir = Vector3.zero;
 
             for (int i = 0; i < asteroidMap.Count; i++)
             {
@@ -225,7 +222,7 @@ namespace GTS.AOC
         {
             int counter = 0;
 
-            Vector3 dir = asteroidMap[index].position - transform.position;
+            Vector3 dir = Vector3.zero;
             lineRenderer.SetPosition(0, transform.position);
 
             for (int i = 0; i < asteroidMap.Count; i++)
