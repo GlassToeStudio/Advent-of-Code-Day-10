@@ -20,15 +20,21 @@ namespace GTS.AOC
         
         public void Init(CellType _type, Vector2 _coordinates, Vector3 _position)
         {
-            Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f);
-            float zRot = UnityEngine.Random.Range(0, 180);
-            GameObject go = Instantiate(explosionPrefab, pos, Quaternion.Euler(0, 0, zRot), this.transform);
-            explosion = go.GetComponent<Animator>();
+            CreateExplosion();
+
             rend = GetComponentInChildren<Renderer>();
             block = new MaterialPropertyBlock();
+
             this.position = _position;
             this.Coordinates = _coordinates;
+
             SetType(_type);
+        }
+
+        private void CreateExplosion()
+        {
+            GameObject go = Instantiate(explosionPrefab, transform.position, Quaternion.identity, this.transform.parent);
+            explosion = go.GetComponent<Animator>();
         }
 
         public void JustCount()
@@ -121,7 +127,12 @@ namespace GTS.AOC
             cellType = CellType.ASTEROID;
             
             this.gameObject.layer = 8;
-            block.SetColor("_Color", Color.white);
+            Color32 color = new Color32((byte)UnityEngine.Random.Range(80,120),
+                                        (byte)UnityEngine.Random.Range(43, 112),
+                                        (byte)UnityEngine.Random.Range(18, 95),
+                                        255);
+
+            block.SetColor("_Color", color);
             rend.material.DisableKeyword("_EMISSION");
             rend.SetPropertyBlock(block);
             if (baseStation != null)

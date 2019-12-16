@@ -51,6 +51,9 @@ namespace GTS.AOC
 
             switch (type)
             {
+                case SearchType.INITIAL_SOLVE:
+                    InitialSovle();
+                    break;
                 case SearchType.RADIAL_SCAN_FAST:
                     RadialScanFast();
                     break;
@@ -72,6 +75,14 @@ namespace GTS.AOC
                 default:
                     Debug.LogError("No Type set!");
                     break;
+            }
+        }
+
+        private void InitialSovle()
+        {
+            foreach (var asteroid in allAsteroids)
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -293,6 +304,7 @@ namespace GTS.AOC
 
     public enum SearchType
     {
+        INITIAL_SOLVE,
         RADIAL_SCAN_FAST,
         RADIAL_SCAN_ANIMATED,
         RADIAL_SCAN_AND_DESTROY,

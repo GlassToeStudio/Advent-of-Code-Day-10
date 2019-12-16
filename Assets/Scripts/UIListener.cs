@@ -12,7 +12,7 @@ namespace GTS.AOC
         private SearchType searchType;
         private int enumInt = 0;
         private int enumCount = 0;
-
+        Button b;
         private void Start()
         {
             counterText = GameObject.Find("Counter_Text").GetComponent<TextMeshProUGUI>();
@@ -20,13 +20,14 @@ namespace GTS.AOC
 
             searchType = FindObjectOfType<Spawner>().scanType;
             enumInt = (int)searchType;
-            enumCount = Enum.GetNames(typeof(SearchType)).Length - 1;
+            enumCount = Enum.GetNames(typeof(SearchType)).Length;
+            Debug.Log(enumCount);
             searchTypeText.text = ConvertToTitleCase(searchType);
 
             BaseStation bs = FindObjectOfType<BaseStation>();
             bs.OnCounterUpdated += UpdateText;
 
-            Button b = GameObject.Find("StartButton").GetComponent<Button>();
+            b = GameObject.Find("StartButton").GetComponent<Button>();
             b.onClick.AddListener(() => bs.StartOnClick(searchType));
             b.onClick.AddListener(() => DisablePanel());
 
@@ -48,10 +49,11 @@ namespace GTS.AOC
                 enumInt = (enumInt - 1);
                 if (enumInt < 0)
                 {
-                    enumInt = enumCount;
+                    enumInt = enumCount - 1;
                 }
             }
 
+            Debug.Log(enumInt);
             searchType = (SearchType)enumInt;
 
             searchTypeText.text = ConvertToTitleCase(searchType);
@@ -82,6 +84,14 @@ namespace GTS.AOC
                 s += (System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(word.ToLower()) + " ");
             }
             return s;
+        }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                b.onClick.Invoke();
+            }
         }
     }
 }

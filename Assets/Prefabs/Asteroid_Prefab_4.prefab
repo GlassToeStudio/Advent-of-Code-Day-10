@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &570664025425775151
 Transform:
@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 162056164662828837}
   - component: {fileID: 701604885493733926}
   - component: {fileID: 8118589692586618119}
+  - component: {fileID: 2571268525107613383}
   m_Layer: 8
   m_Name: ASTEROID_LOW_POLY_4_
   m_TagString: Untagged
@@ -139,3 +140,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2571268525107613383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821532384070430512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03754e8a5b17cdc478a0b5a9d1f30b96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
